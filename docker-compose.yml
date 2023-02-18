@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  porter:
+    build:
+      context: ./porter
+      dockerfile: Dockerfile.porter
+      target: dev
+    ports:
+      - 8080:8080
+    tty: true
+    command: pnpm run watch
+    volumes:
+      - type: bind
+        source: ./porter
+        target: /app
+      # - type: volume
+      #   source: node_modules
+      #   target: /app/node_modules
+    # depends_on:
+    # environment:
+    logging:
+      options:
+        max-size: '10m'
+        max-file: '1'
+# volumes:
+#   node_modules:
