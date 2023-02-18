@@ -11,3 +11,6 @@ jobs:
     
     - name: build
       run: docker compose build
+
+    - name: test
+      run: docker compose exec porter pnpm run test
