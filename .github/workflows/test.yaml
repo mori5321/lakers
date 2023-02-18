@@ -13,4 +13,4 @@ jobs:
       run: docker compose build
 
     - name: test
-      run: docker compose exec porter pnpm run test
+      run: docker compose run --rm porter pnpm run test
