@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "ES2015",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": ["es2020", "dom"],
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "allowJs": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "preserveWatchOutput": true,
+    "incremental": true,
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "include": ["./src/**/*.ts"]
+}
