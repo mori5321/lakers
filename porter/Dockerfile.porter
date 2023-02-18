@@ -5,10 +5,14 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 
-FROM node:18-alpine AS dev
-RUN npm i -g pnpm
+
+FROM base AS dev
 EXPOSE 8080
+WORKDIR /app
+CMD ["pnpm", "run", "watch"]
+
+FROM base AS test
 WORKDIR /app
 COPY . .
 
-CMD ["pnpm", "run", "watch"]
+# SEE: https://medium.com/@alpercitak/nest-js-use-pnpm-on-docker-81998ab4d8a1

@@ -1,3 +1,13 @@
+## docker-compose command for porter
+```
+docker compose build
+```
+
+```
+docker compose up -d porter
+```
+
+
 
 
 ## Docker Comand for Porter

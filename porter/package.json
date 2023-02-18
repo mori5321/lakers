@@ -9,7 +9,7 @@
     "build:watch": "tsc -p tsconfig.json --watch --incremental",
     "start": "node dist/index.js",
     "start:watch": "node --watch dist/index.js",
-    "test": "jest"
+    "test": "pnpm jest"
   },
   "keywords": [],
   "author": "",
