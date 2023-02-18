@@ -9,6 +9,8 @@ RUN pnpm install
 FROM base AS dev
 EXPOSE 8080
 WORKDIR /app
+# ignore if you use docker-compose & do bind mount.
+COPY . .
 CMD ["pnpm", "run", "watch"]
 
 FROM base AS test
