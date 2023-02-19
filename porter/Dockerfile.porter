@@ -1,3 +1,5 @@
+# SEE: https://medium.com/@alpercitak/nest-js-use-pnpm-on-docker-81998ab4d8a1
+
 FROM node:18-alpine AS base
 
 RUN corepack enable pnpm
@@ -8,13 +10,8 @@ RUN pnpm install
 
 FROM base AS dev
 EXPOSE 8080
-WORKDIR /app
-# ignore if you use docker-compose & do bind mount.
+# This would be ignored if you use docker-compose & do bind mount.
 COPY . .
 CMD ["pnpm", "run", "watch"]
 
-FROM base AS test
-WORKDIR /app
-COPY . .
 
-# SEE: https://medium.com/@alpercitak/nest-js-use-pnpm-on-docker-81998ab4d8a1
