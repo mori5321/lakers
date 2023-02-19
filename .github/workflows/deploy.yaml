@@ -1,0 +1,29 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+environment:
+  IMAGE_TAG: ${{ github.sha }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+
+    - name: test
+      run: docker compose -f docker-compose.yml run --rm porter pnpm run test
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: porter - build and push
+      uses: docker/build-push-action@v4
+      with:
+        context: ./porter
+        file: ./porter/Dockerfile.porter
+        push: false
