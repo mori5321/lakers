@@ -1,3 +1,9 @@
-import { build } from './app'
+import { buildApp } from './app'
 
-build({ host: '0.0.0.0', port: 8080 })
+const main = async () => {
+  const app = buildApp()
+
+  app.run({ host: '0.0.0.0', port: 8080 })
+} 
+
+main()

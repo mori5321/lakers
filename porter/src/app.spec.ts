@@ -1,8 +1,10 @@
-import { build } from './app'
+import { buildApp } from './app'
 
-describe('build', () => {
+describe('run', () => {
   test('health check respond with 200', async () => {
-    const app = await build({ host: '0.0.0.0', port: 9080 })
+    const app = await buildApp()
+
+    app.run({ host: '0.0.0.0', port: 8090 })
 
     const response = await app.inject({
       method: 'GET',

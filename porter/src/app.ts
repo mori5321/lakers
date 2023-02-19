@@ -1,12 +1,12 @@
 import multipart from '@fastify/multipart'
 import * as Fastify from 'fastify'
 
-type BuildOptions = {
+type RunOptions = {
   host: string,
   port: number,
 }
 
-const build = async ({ host, port }: BuildOptions) => {
+const buildApp = () => {
   const fastify = Fastify.fastify({ logger: true })
 
   fastify.register(multipart)
@@ -35,17 +35,30 @@ const build = async ({ host, port }: BuildOptions) => {
     }
   })
 
-  fastify.listen({ port, host }, (err, address) => {
-    if (err) {
-      console.error(err)
-      process.exit(1)
-    }
 
-    console.log(`Server's listening at ${address}`)
-  })
+  const run = ({ host, port }: RunOptions) => {
+    fastify.listen({ host, port }, (err, address) => {
+      if (err) {
+        console.error(err)
+        process.exit(1)
+      }
 
-  return fastify
+      console.log(`Server's listening at ${address}`)
+    })
+  }
+
+  const inject = (options: Fastify.InjectOptions) => {
+    return fastify.inject(options)
+  }
+
+  const close = fastify.close
+
+  return {
+    run,
+    inject,
+    close,
+  }
 }
 
-export { build }
+export { buildApp }
 
