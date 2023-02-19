@@ -49,3 +49,7 @@ brew install act
 ```
 act push
 ```
+
+```
+act push --job deploy
+```
