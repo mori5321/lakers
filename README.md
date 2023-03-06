@@ -1,3 +1,10 @@
+## Overall Design
+https://miro.com/app/board/uXjVOn4wStQ=/?moveToWidget=3458764546583083982&cot=14
+
+<img width="1101" alt="image" src="https://user-images.githubusercontent.com/15435180/222996842-62681338-3f70-4a5c-88d5-38a8475d0cbb.png">
+
+
+
 ## docker-compose command for porter
 ```
 docker compose build
